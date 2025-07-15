@@ -85,10 +85,29 @@ const confirm = () => {
   }
 
   //mostriamo il messaggio all'utente.
-  message.innerText = `Hai indovinato ${correctAnswers.length} (${correctAnswers})`;
+  message.classList.remove('text-danger');
+  message.innerHTML = `
+  <h1 class= 'mt-3'>Risultato:</h1>
+  <table border="1" class= 'col-12 table-bordered mt-3'>
+      <thead>
+        <tr>
+          <th>Quanti valori su 5</th>
+          <th>Numeri indovinati</th>
+          <th>Numeri giusti</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>${correctAnswers.length}</td>
+          <td>${correctAnswers}</td>
+          <td>${numbers}</td>
+        </tr>
+      </tbody>
+    </table>`;
+  // `Hai indovinato ${correctAnswers.length} valori su 5!! numeri che hai indovinato:(${correctAnswers}) I numeri giusti erano questi: ${numbers}`;
 };
 
 button.addEventListener("click", (e) => {
-  e.preventDefault;
+  e.preventDefault();
   confirm();
 });
